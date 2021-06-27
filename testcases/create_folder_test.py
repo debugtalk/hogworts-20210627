@@ -12,6 +12,7 @@ class TestCaseMubuCreateFolder(HttpRunner):
         Config("testcase description")
         .verify(False)
         .variables(**{"data_unique_id": "ff03457c-2d57-4234-aab4-ac640f13ed69",})
+        .export("folderID")
     )
 
     teststeps = [
