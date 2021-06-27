@@ -831,6 +831,7 @@ class TestCaseMubu(HttpRunner):
                 }
             )
             .with_json({"name": "${gen_random_folder_name($prefix)}", "folderId": "0"})
+            .teardown_hook("${sleep_random_seconds()}", "sleep_secs")
             .extract()
             .with_jmespath("body.data.folder.id", "folderID")
             .validate()

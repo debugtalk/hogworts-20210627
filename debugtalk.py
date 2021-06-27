@@ -1,5 +1,6 @@
 import time
 import uuid
+import random
 
 from httprunner import __version__
 
@@ -14,6 +15,13 @@ def sum_two(m, n):
 
 def sleep(n_secs):
     time.sleep(n_secs)
+
+
+def sleep_random_seconds() -> int:
+    secs = random.randint(1, 5)
+    time.sleep(secs)
+    print("sleep_random_seconds: ", secs)
+    return secs
 
 
 def gen_unique_request_id():
