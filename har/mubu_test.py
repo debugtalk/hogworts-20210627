@@ -12,6 +12,8 @@ class TestCaseMubu(HttpRunner):
         "data_unique_id": "ff03457c-2d57-4234-aab4-ac640f13ed69",
         "csrf_token": "6b496110-0494-4893-9465-2940d370b514",
         "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
+        "phone": "18613143458",
+        "password": "qtFrwy$!kt3RTRq@QstF"
     })
 
     teststeps = [
@@ -222,8 +224,8 @@ class TestCaseMubu(HttpRunner):
             )
             .with_json(
                 {
-                    "phone": "18613143458",
-                    "password": "qtFrwy$!kt3RTRq@QstF",
+                    "phone": "$phone",
+                    "password": "$password",
                     "callbackType": 0,
                 }
             )
