@@ -819,6 +819,8 @@ class TestCaseMubu(HttpRunner):
                 }
             )
             .with_json({"name": "hogwarts-demo", "folderId": "0"})
+            .extract()
+            .with_jmespath("body.data.folder.id", "folderID")
             .validate()
             .assert_equal("status_code", 200)
             .assert_equal("body.code", 0)
@@ -876,7 +878,7 @@ class TestCaseMubu(HttpRunner):
                     "accept-language": "en-US,en;q=0.9",
                 }
             )
-            .with_json({"folderId": "5xEM7vWdWtY", "source": "home"})
+            .with_json({"folderId": "$folderID", "source": "home"})
             .validate()
             .assert_equal("status_code", 200)
             .assert_equal("body.code", 0)
@@ -926,7 +928,7 @@ class TestCaseMubu(HttpRunner):
                     "accept-language": "en-US,en;q=0.9",
                 }
             )
-            .with_json({"folderId": "5xEM7vWdWtY", "type": 0})
+            .with_json({"folderId": "$folderID", "type": 0})
             .validate()
             .assert_equal("status_code", 200)
             .assert_equal("body.code", 0)
@@ -1735,7 +1737,7 @@ class TestCaseMubu(HttpRunner):
         #             "accept-language": "en-US,en;q=0.9",
         #         }
         #     )
-        #     .with_json({"folderId": "5xEM7vWdWtY", "source": "home"})
+        #     .with_json({"folderId": "$folderID", "source": "home"})
         #     .validate()
         #     .assert_equal("status_code", 200)
         #     .assert_equal("body.code", 0)
