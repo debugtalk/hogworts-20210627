@@ -3,7 +3,7 @@
 
 
 from httprunner import HttpRunner, Config, Step, RunRequest, RunTestCase
-from testcases.create_folder_test import TestCaseMubuCreateFolder
+from testcases.login_test import TestCaseLoginMubu as CaseLoginMubu
 
 
 class TestCaseMubuCreateDoc(HttpRunner):
@@ -15,16 +15,19 @@ class TestCaseMubuCreateDoc(HttpRunner):
             **{
                 "memberId": "7743147326753859",
                 "data_unique_id": "ff03457c-2d57-4234-aab4-ac640f13ed69",
+                "folderID": "5xEM7vWdWtY",
             }
         )
     )
 
     teststeps = [
         Step(
-            RunTestCase("login and create folder")
-            .call(TestCaseMubuCreateFolder)
+            RunTestCase("login mubu")
+            .with_variables(
+                **{"phone": "18613143458", "password": "qtFrwy$!kt3RTRq@QstF"}
+            )
+            .call(CaseLoginMubu)
             .export("jwt_token")
-            .export("folderID")
         ),
         Step(
             RunRequest("/v3/api/list/create_doc")

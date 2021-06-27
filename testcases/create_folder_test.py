@@ -3,7 +3,7 @@
 
 
 from httprunner import HttpRunner, Config, Step, RunRequest, RunTestCase
-from testcases.login_test import TestCaseLoginMubu
+from testcases.login_test import TestCaseLoginMubu as CaseLoginMubu
 
 
 class TestCaseMubuCreateFolder(HttpRunner):
@@ -21,7 +21,7 @@ class TestCaseMubuCreateFolder(HttpRunner):
             .with_variables(
                 **{"phone": "18613143458", "password": "qtFrwy$!kt3RTRq@QstF"}
             )
-            .call(TestCaseLoginMubu)
+            .call(CaseLoginMubu)
             .export("jwt_token")
         ),
         Step(
