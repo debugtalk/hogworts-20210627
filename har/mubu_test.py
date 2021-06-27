@@ -9,7 +9,8 @@ class TestCaseMubu(HttpRunner):
 
     config = Config("testcase description").verify(False).variables(**{
         "memberId": "7743147326753859",
-        "data_unique_id": "ff03457c-2d57-4234-aab4-ac640f13ed69"
+        "data_unique_id": "ff03457c-2d57-4234-aab4-ac640f13ed69",
+        "csrf_token": "6b496110-0494-4893-9465-2940d370b514"
     })
 
     teststeps = [
@@ -35,7 +36,7 @@ class TestCaseMubu(HttpRunner):
             .with_cookies(
                 **{
                     "data_unique_id": "$data_unique_id",
-                    "csrf_token": "6b496110-0494-4893-9465-2940d370b514",
+                    "csrf_token": "$csrf_token",
                     "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
                     "language": "en-US",
                     "country": "US",
@@ -70,7 +71,7 @@ class TestCaseMubu(HttpRunner):
             .with_cookies(
                 **{
                     "data_unique_id": "$data_unique_id",
-                    "csrf_token": "6b496110-0494-4893-9465-2940d370b514",
+                    "csrf_token": "$csrf_token",
                     "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
                     "language": "en-US",
                     "country": "US",
@@ -107,7 +108,7 @@ class TestCaseMubu(HttpRunner):
             .with_cookies(
                 **{
                     "data_unique_id": "$data_unique_id",
-                    "csrf_token": "6b496110-0494-4893-9465-2940d370b514",
+                    "csrf_token": "$csrf_token",
                     "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
                     "language": "en-US",
                     "country": "US",
@@ -251,7 +252,7 @@ class TestCaseMubu(HttpRunner):
             .with_cookies(
                 **{
                     "data_unique_id": "$data_unique_id",
-                    "csrf_token": "6b496110-0494-4893-9465-2940d370b514",
+                    "csrf_token": "$csrf_token",
                     "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
                     "language": "en-US",
                     "country": "US",
