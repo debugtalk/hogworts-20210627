@@ -42,5 +42,9 @@ def gen_unique_request_id():
     return request_id
 
 
+def gen_unique_request_id_list():
+    return [str(uuid.uuid4()) for i in range(2)]
+
+
 def gen_random_folder_name(prefix: str) -> str:
     return prefix + "-" + str(int(time.time() * 1000))[-3:]
