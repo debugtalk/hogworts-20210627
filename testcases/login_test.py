@@ -13,7 +13,7 @@ class TestCaseLoginMubu(HttpRunner):
         "SESSION": "a3a50348-a6fd-487c-aab0-7de988897ad3",
         "phone": "18613143458",
         "password": "qtFrwy$!kt3RTRq@QstF"
-    })
+    }).export("jwt_token")
 
     teststeps = [
         Step(
