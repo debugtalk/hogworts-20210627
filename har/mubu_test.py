@@ -805,6 +805,9 @@ class TestCaseMubu(HttpRunner):
         ),
         Step(
             RunRequest("/v3/api/list/create_folder")
+            .with_variables(**{
+                "prefix": "hogwarts-demo"
+            })
             .post("https://api2.mubu.com/v3/api/list/create_folder")
             .with_headers(
                 **{
@@ -827,7 +830,7 @@ class TestCaseMubu(HttpRunner):
                     "accept-language": "en-US,en;q=0.9",
                 }
             )
-            .with_json({"name": "hogwarts-demo", "folderId": "0"})
+            .with_json({"name": "${gen_random_folder_name($prefix)}", "folderId": "0"})
             .extract()
             .with_jmespath("body.data.folder.id", "folderID")
             .validate()

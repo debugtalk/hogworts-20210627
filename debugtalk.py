@@ -21,3 +21,6 @@ def gen_unique_request_id():
     # print("request_id: ", request_id)
     return request_id
 
+
+def gen_random_folder_name(prefix: str) -> str:
+    return prefix + "-" + str(int(time.time() * 1000))[-3:]
