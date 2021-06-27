@@ -898,6 +898,10 @@ class TestCaseMubu(HttpRunner):
         ),
         Step(
             RunRequest("/v3/api/list/create_doc")
+            .with_variables(**{
+                "sleep_secs": "${rand_int()}"
+            })
+            .setup_hook("${check_sleep_secs($sleep_secs)}")
             .options("https://api2.mubu.com/v3/api/list/create_doc")
             .with_headers(
                 **{

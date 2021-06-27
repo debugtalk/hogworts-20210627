@@ -24,6 +24,18 @@ def sleep_random_seconds() -> int:
     return secs
 
 
+def rand_int() -> int:
+    return random.randint(1, 5)
+
+
+def check_sleep_secs(secs: int):
+    if secs < 3:
+        print("sleep < 3s, sleep 2 more seconds ...")
+        time.sleep(2)
+    else:
+        print(f"sleep {secs}s, no need to sleep.")
+
+
 def gen_unique_request_id():
     request_id = str(uuid.uuid4())
     # print("request_id: ", request_id)
