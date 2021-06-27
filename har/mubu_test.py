@@ -7,7 +7,9 @@ from httprunner import HttpRunner, Config, Step, RunRequest, RunTestCase
 
 class TestCaseMubu(HttpRunner):
 
-    config = Config("testcase description").verify(False)
+    config = Config("testcase description").verify(False).variables(**{
+        "memberId": "7743147326753859"
+    })
 
     teststeps = [
         Step(
@@ -1132,7 +1134,7 @@ class TestCaseMubu(HttpRunner):
                 {
                     "reqId": "1",
                     "type": "USER_HEARTBEAT",
-                    "memberId": "7743147326753859",
+                    "memberId": "$memberId",
                     "documentId": "$documentId",
                 }
             )
@@ -1262,7 +1264,7 @@ class TestCaseMubu(HttpRunner):
             .with_json(
                 {
                     "reqId": "2",
-                    "memberId": "7743147326753859",
+                    "memberId": "$memberId",
                     "type": "CURSOR",
                     "documentId": "$documentId",
                     "cursor": {
@@ -1292,7 +1294,7 @@ class TestCaseMubu(HttpRunner):
                     "content-type": "application/json;charset=UTF-8",
                     "accept": "application/json, text/plain, */*",
                     "jwt-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhcHAiOiJtdWJ1Iiwic3ViIjoiMTQ0OTE2NCIsImxvZ2luVHlwZSI6Im1vYmlsZSIsImV4cCI6MTYyNzM2NjE1MSwiaWF0IjoxNjI0Nzc0MTUxfQ.NE7JIEpfLW3ZxHEVt3qmcUG8UftJbYcZqFs-YL1FNWFN0xdfWXEhUo4cO289_gda0Y63Pl71UazB27fXMSNWGw",
-                    "request-id": "members:7743147326753859:1624774193511",
+                    "request-id": "members:$memberId:1624774193511",
                     "x-request-id": "a1636776-badc-4878-b95d-a23f539b2005",
                     "origin": "https://mubu.com",
                     "sec-fetch-site": "same-site",
@@ -1303,7 +1305,7 @@ class TestCaseMubu(HttpRunner):
                     "accept-language": "en-US,en;q=0.9",
                 }
             )
-            .with_json({"memberId": "7743147326753859", "documentId": "$documentId"})
+            .with_json({"memberId": "$memberId", "documentId": "$documentId"})
             .validate()
             .assert_equal("status_code", 200)
             .assert_equal("body.code", 0)
@@ -1333,7 +1335,7 @@ class TestCaseMubu(HttpRunner):
             )
             .with_json(
                 {
-                    "memberId": "7743147326753859",
+                    "memberId": "$memberId",
                     "type": "CHANGE",
                     "version": 0,
                     "documentId": "$documentId",
@@ -1372,7 +1374,7 @@ class TestCaseMubu(HttpRunner):
             )
             .with_json(
                 {
-                    "memberId": "7743147326753859",
+                    "memberId": "$memberId",
                     "type": "CHANGE",
                     "version": 1,
                     "documentId": "$documentId",
@@ -1460,7 +1462,7 @@ class TestCaseMubu(HttpRunner):
         #     )
         #     .with_json(
         #         {
-        #             "memberId": "7743147326753859",
+        #             "memberId": "$memberId",
         #             "type": "CHANGE",
         #             "version": 2,
         #             "documentId": "$documentId",
@@ -1513,7 +1515,7 @@ class TestCaseMubu(HttpRunner):
         #     )
         #     .with_json(
         #         {
-        #             "memberId": "7743147326753859",
+        #             "memberId": "$memberId",
         #             "type": "CHANGE",
         #             "version": 3,
         #             "documentId": "$documentId",
@@ -1568,7 +1570,7 @@ class TestCaseMubu(HttpRunner):
         #     )
         #     .with_json(
         #         {
-        #             "memberId": "7743147326753859",
+        #             "memberId": "$memberId",
         #             "type": "CHANGE",
         #             "version": 4,
         #             "documentId": "$documentId",
@@ -1621,7 +1623,7 @@ class TestCaseMubu(HttpRunner):
         #     )
         #     .with_json(
         #         {
-        #             "memberId": "7743147326753859",
+        #             "memberId": "$memberId",
         #             "type": "CHANGE",
         #             "version": 5,
         #             "documentId": "$documentId",
@@ -1678,7 +1680,7 @@ class TestCaseMubu(HttpRunner):
         #         {
         #             "reqId": "13",
         #             "type": "UNWATCH",
-        #             "memberId": "7743147326753859",
+        #             "memberId": "$memberId",
         #             "documentId": "$documentId",
         #         }
         #     )
