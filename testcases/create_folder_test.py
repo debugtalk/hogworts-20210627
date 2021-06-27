@@ -31,7 +31,7 @@ class TestCaseMubuCreateFolder(HttpRunner):
         Step(
             RunTestCase("login mubu")
             .with_variables(
-                **{"phone": "18613143458", "password": "qtFrwy$!kt3RTRq@QstF"}
+                **{"phone": "18612345678", "password": "pass@word123"}
             )
             .call(CaseLoginMubu)
             .export("jwt_token")
